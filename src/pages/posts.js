@@ -27,12 +27,23 @@ export default function Posts (){
             });
             const data=await response.json();
             console.log(data);
-   
         };
+
+            const handleDelete=async(id)=>{
+                const response=await fetch('https://jsonplaceholder.typicode.com/posts/${ id } ',{
+                    method:'DELETE',
+                });
+                const data =await response.json();
+                console.log(data);
+            
+        };
+            
+   
+        
     
     return(
-        <div>
-            <h1>
+        <div className="px-10 py-4">
+            <h1 className="text-3xl text-blue-950 font-bold mb-6 underline">
                 todays posts
             </h1>
             <div>
@@ -46,6 +57,7 @@ export default function Posts (){
                             <Post
                             post={post}
                             key={index}
+                            onDelete={handleDelete}
                             />
                         )
                     })
